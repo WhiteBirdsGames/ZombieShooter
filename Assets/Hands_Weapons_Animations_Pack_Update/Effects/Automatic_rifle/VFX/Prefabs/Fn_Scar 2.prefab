@@ -37482,9 +37482,9 @@ GameObject:
   - component: {fileID: 198164465090507744}
   - component: {fileID: 199634208596355576}
   - component: {fileID: 82040238847878760}
-  - component: {fileID: -6130136781059563544}
+  - component: {fileID: -4611736543299602590}
   m_Layer: 0
-  m_Name: Fn_Scar
+  m_Name: Fn_Scar 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42335,7 +42335,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f04b3ff514c3254898fc3754113a032, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9fac002407092764e8936cb3d0387616, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -42421,7 +42421,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &-6130136781059563544
+--- !u!114 &-4611736543299602590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

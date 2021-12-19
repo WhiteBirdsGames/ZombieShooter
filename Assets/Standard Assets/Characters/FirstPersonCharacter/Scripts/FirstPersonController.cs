@@ -28,7 +28,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-
+        public Animator ParentCamAnimator;
+        public WeaponsControl weaponsControl;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -180,25 +181,30 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void UpdateCameraPosition(float speed)
         {
-            Vector3 newCameraPosition;
+          //  Vector3 newCameraPosition;
             if (!m_UseHeadBob)
             {
-                return;
+                ParentCamAnimator.enabled = false;
+              //  return;
             }
             if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
             {
-                m_Camera.transform.localPosition =
+                ParentCamAnimator.enabled = true;
+                weaponsControl.Walk = true;
+              /*  m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();*/
             }
             else
             {
-                newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+                ParentCamAnimator.enabled = false;
+                weaponsControl.Walk = false;
+                /* newCameraPosition = m_Camera.transform.localPosition;
+                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();*/
             }
-            m_Camera.transform.localPosition = newCameraPosition;
+          //  m_Camera.transform.localPosition = newCameraPosition;
         }
 
 
