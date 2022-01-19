@@ -53,7 +53,10 @@ public class HandTakes : MonoBehaviour
             }
         }
     }
-
+    private void FixedUpdate()
+    {
+        AnimatorGUN.SetBool("IsGunInHands", IsGunInHand);
+    }
     public void TakeHand ()
     {
         for (int i = 0; i < TagObjects.Length; i++)
@@ -65,7 +68,7 @@ public class HandTakes : MonoBehaviour
                     TagObjects[i].Object.SetActive(false);
                     TagObjects[i].ObjectTip.GetComponent<Animation>().Play();
                     Invoke("NextTipDoor", 2.3f);
-                    AnimatorGUN.SetBool("IsGunInHands", true);
+                  
                     IsGunInHand = true;
                     InfoGun.SetActive(true);
                     break;

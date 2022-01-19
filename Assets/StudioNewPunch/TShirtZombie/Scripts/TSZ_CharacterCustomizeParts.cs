@@ -7,7 +7,7 @@ public class TSZ_CharacterCustomizeParts : MonoBehaviour
 	private int bodyTyp;
 	private int topTyp;
 	private int bottomTyp;
-
+    public bool IsRandom;
 
 	private TSZ_AssetsListParts materialsList;
 
@@ -43,7 +43,14 @@ public class TSZ_CharacterCustomizeParts : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		
+		if(IsRandom)
+        {
+           
+            bodyType = (BodyType)Random.Range(0, 3);
+            topType = (TopType)Random.Range(0, 4);
+            bottomType = (BottomType)Random.Range(0, 3);
+            charCustomize((int)bodyType, (int)topType, (int)bottomType);
+        }
 	}
 	
 	// Update is called once per frame

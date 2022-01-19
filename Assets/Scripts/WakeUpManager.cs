@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WakeUpManager : MonoBehaviour
 {
-    public GameObject FPS_OB, WakeUp_OB, Tip_0_OB;
+    public GameObject FPS_OB, WakeUp_OB, Tip_0_OB, WakeUpCanvas;
     public Animation AnimationWakeUp;
 
     public bool IsDisabledStartAnimation;
 
     private void Awake()
     {
-        if(IsDisabledStartAnimation)
+        WakeUpCanvas.SetActive(true);
+        if (IsDisabledStartAnimation)
         {
             GoEndAnimation();
         }
@@ -27,6 +28,7 @@ public class WakeUpManager : MonoBehaviour
 
     public void GoEndAnimation ()
     {
+        WakeUpCanvas.SetActive(false);
         FPS_OB.SetActive(true);
         WakeUp_OB.SetActive(false);
         Tip_0_OB.SetActive(true);

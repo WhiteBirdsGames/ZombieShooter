@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class ZombieControl : MonoBehaviour
 {
     public float HP = 100;
+    public bool IsFindPlayerStart = true;
     public Transform PlayerTrans;
     public float DistanceAttack, SpeedRunZombie, AttackDamage;
     public enum States
@@ -27,6 +28,11 @@ public class ZombieControl : MonoBehaviour
         navMeshAgent.autoBraking = false;
         navMeshAgent.stoppingDistance = DistanceAttack;
         navMeshAgent.speed = SpeedRunZombie;
+
+        if(IsFindPlayerStart)
+        {
+            PlayerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     private void Update()
@@ -76,6 +82,10 @@ public class ZombieControl : MonoBehaviour
             foreach(Collider col in CollidersDisableDeath)
             {
                 col.enabled = false;
+            }
+            if(State != States.Death)
+            {
+                WavesZombieSpawner.Instance.AddKilledZombie();
             }
             State = States.Death;
         }
