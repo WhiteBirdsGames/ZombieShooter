@@ -48,6 +48,7 @@ public class WeaponsControl : MonoBehaviour
         HP_Player -= _damage;
         if(HP_Player < 0)
         {
+            GameManager.Instance.ShowLose();
             HP_Player = 0;
         }
         TextHpPlayer.text = HP_Player.ToString();

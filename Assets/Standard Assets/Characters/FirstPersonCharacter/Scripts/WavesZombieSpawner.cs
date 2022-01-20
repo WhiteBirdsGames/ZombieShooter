@@ -79,5 +79,10 @@ public class WavesZombieSpawner : MonoBehaviour
     public void AddKilledZombie ()
     {
         KilledZombi++;
+
+        if(KilledZombi >= AllCountZombi)
+        {
+            GameManager.Instance.ShowWin();
+        }
     }
 }

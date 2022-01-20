@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WakeUpManager : MonoBehaviour
 {
-    public GameObject FPS_OB, WakeUp_OB, Tip_0_OB, WakeUpCanvas;
+    public GameObject FPS_OB, WakeUp_OB, Tip_0_OB, WakeUpCanvas, CanvasWindows;
     public Animation AnimationWakeUp;
 
     public bool IsDisabledStartAnimation;
@@ -28,6 +28,7 @@ public class WakeUpManager : MonoBehaviour
 
     public void GoEndAnimation ()
     {
+        CanvasWindows.SetActive(true);
         WakeUpCanvas.SetActive(false);
         FPS_OB.SetActive(true);
         WakeUp_OB.SetActive(false);
