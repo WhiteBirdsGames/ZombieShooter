@@ -78,6 +78,7 @@ public class HandTakes : MonoBehaviour
                     TagObjects[i].Object.GetComponent<Animation>().Play();
                     TagObjects[i].ObjectTip.GetComponent<Animation>().Play();
                     TagObjects[i].Object.GetComponent<Collider>().enabled = false;
+                    TagObjects[i].Object.GetComponent<IInteration>().Interation();
                     break;
                 }
             }

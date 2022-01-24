@@ -18,7 +18,6 @@ public class CinematicController : MonoBehaviour
     }
     public void StartCinematic()
     {
-        Debug.Log("1");
         foreach (var item in _startCinematicDisable)
         {
             item.SetActive(false);

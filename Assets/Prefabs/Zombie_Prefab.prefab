@@ -460,12 +460,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0af1b94b24005a4d8e568a54200126c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 10
   IsFindPlayerStart: 1
   PlayerTrans: {fileID: 0}
   DistanceAttack: 0.7
-  SpeedRunZombie: 0.2
+  SpeedRunZombie: 0.3
   AttackDamage: 4
+  _deathZombieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _timeToStartDeathEvent: 0
   State: 0
   ZombieAnimator: {fileID: 8229387383953746165}
   Run: 0

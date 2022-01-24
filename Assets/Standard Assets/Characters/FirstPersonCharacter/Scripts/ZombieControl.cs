@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class ZombieControl : MonoBehaviour
 {
@@ -7,6 +8,16 @@ public class ZombieControl : MonoBehaviour
     public bool IsFindPlayerStart = true;
     public Transform PlayerTrans;
     public float DistanceAttack, SpeedRunZombie, AttackDamage;
+
+
+    [SerializeField]
+    private UnityEvent _deathZombieEvent = default;
+    [SerializeField]
+    private float _timeToStartDeathEvent = default;
+
+
+    private bool isDeathEvent = false;
+
     public enum States
     {
         Idle,
@@ -53,6 +64,7 @@ public class ZombieControl : MonoBehaviour
             Damage = false;
             Slap = 0;
             Death = true;
+            DeathEvent();
         }
 
         if (Death)
@@ -61,6 +73,19 @@ public class ZombieControl : MonoBehaviour
         }
     }
 
+    private void DeathEvent()
+    {
+        if (!isDeathEvent)
+        {
+            isDeathEvent = true;
+            Invoke(nameof(StartDeathEvent), _timeToStartDeathEvent);
+        }
+    }
+
+    private void StartDeathEvent()
+    {
+        _deathZombieEvent?.Invoke();
+    }
     public void OnDamagePlayer ()
     {
         if (Vector3.Distance(transform.position, PlayerTrans.position) <= DistanceAttack)
