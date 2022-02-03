@@ -28,8 +28,8 @@ public class ZombieControl : MonoBehaviour
     }
     public States State;
     public Animator ZombieAnimator;
-    public bool Run, Damage, Death;
-    public int Slap;
+    public bool Run, Damage;
+    public int Slap, Death;
 
     public NavMeshAgent navMeshAgent;
     public Collider[] CollidersDisableDeath;
@@ -42,12 +42,21 @@ public class ZombieControl : MonoBehaviour
 
         if(IsFindPlayerStart)
         {
-            PlayerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+                PlayerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         }
     }
 
     private void Update()
     {
+        if(PlayerTrans == null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                PlayerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            return;
+        }
         if(State == States.Run)
         {
             RunToPlyer();
@@ -63,11 +72,11 @@ public class ZombieControl : MonoBehaviour
             Run = false;
             Damage = false;
             Slap = 0;
-            Death = true;
+            Death = Random.Range(1, 3);
             DeathEvent();
         }
 
-        if (Death)
+        if (Death != 0)
         {
             State = States.Death;
         }
@@ -127,7 +136,7 @@ public class ZombieControl : MonoBehaviour
         navMeshAgent.isStopped = true;
         Run = false;
         Damage = false;
-        Slap = 1;
+        Slap = Random.Range(1, 3);
 
         if (Vector3.Distance(transform.position, PlayerTrans.position) >  DistanceAttack + 0.4f)
         {
@@ -153,7 +162,7 @@ public class ZombieControl : MonoBehaviour
     {
         ZombieAnimator.SetBool("Run", Run);
         ZombieAnimator.SetBool("Damage", Damage);
-        ZombieAnimator.SetBool("Death", Death);
+        ZombieAnimator.SetInteger("DeadVars", Death);
         ZombieAnimator.SetInteger("Slap", Slap);
     }
 

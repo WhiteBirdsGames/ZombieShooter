@@ -474,8 +474,8 @@ MonoBehaviour:
   ZombieAnimator: {fileID: 8229387383953746165}
   Run: 0
   Damage: 0
-  Death: 0
   Slap: 0
+  Death: 0
   navMeshAgent: {fileID: 8315795304312662909}
   CollidersDisableDeath:
   - {fileID: 8315795304312662906}

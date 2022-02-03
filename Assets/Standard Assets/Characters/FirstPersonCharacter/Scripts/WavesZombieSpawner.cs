@@ -28,6 +28,8 @@ public class WavesZombieSpawner : MonoBehaviour
     public int CurIndexWave;
     public float tmDelayWave, tmDelaySpawn;
 
+    public Transform SpawnPoint1, SpawnPoint2;
+
     void Awake()
     {
         if (Instance == null)
@@ -38,6 +40,17 @@ public class WavesZombieSpawner : MonoBehaviour
             AllCountZombi += WavesZombi[i].MaxCountZombi;
         }
         AllCountZombi += CountStartZombi;
+    }
+
+    public void SpawnTwoZombie ()
+    {
+        GameObject zombi = Instantiate(Prefabzombie, SpawnPoint1.position,
+      Prefabzombie.transform.rotation);
+        zombi.GetComponent<ZombieControl>().State = ZombieControl.States.Run;
+
+        GameObject zombi2 = Instantiate(Prefabzombie, SpawnPoint2.position,
+Prefabzombie.transform.rotation);
+        zombi2.GetComponent<ZombieControl>().State = ZombieControl.States.Run;
     }
 
     private void Update()
