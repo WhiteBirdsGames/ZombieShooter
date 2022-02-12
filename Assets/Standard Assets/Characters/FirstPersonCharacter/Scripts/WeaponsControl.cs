@@ -2,10 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
 public class WeaponsControl : MonoBehaviour
 {
     public float HP_Player;
 
+    public GameObject TrailBullet;
+    public Transform SpawnPointTrail;
     public Text TextBullets, TextHpPlayer;
     public Image IconAim;
     public Color ColorDefaultAim, ColorFireAim;
@@ -29,6 +32,7 @@ public class WeaponsControl : MonoBehaviour
         public AudioClip ReloadSound;
         public AudioSource audioSourceGun;
         public float MinDamage, MaxDamage;
+        public float Spread;
     }
 
     public Weapon[] Weapons;
@@ -59,7 +63,12 @@ public class WeaponsControl : MonoBehaviour
     {
         if (CurrentWeapon.Bullets_InStore > 0)
         {
-            if(Physics.Raycast(PointRayCam.position, PointRayCam.forward, out hit, DistanceRay))
+            Vector3 direction = PointRayCam.transform.forward; // Bullet Spread
+            direction.x += Random.Range(-CurrentWeapon.Spread, CurrentWeapon.Spread);
+            direction.y += Random.Range(-CurrentWeapon.Spread, CurrentWeapon.Spread);
+            direction.z += Random.Range(-CurrentWeapon.Spread, CurrentWeapon.Spread);
+
+            if (Physics.Raycast(PointRayCam.position, direction, out hit, DistanceRay))
             {
                 if(hit.collider)
                 {
@@ -71,8 +80,14 @@ public class WeaponsControl : MonoBehaviour
                         if(TimerShot >= CurrentWeapon.DelayShot)
                         {
                             Instantiate(CurrentWeapon.ParticlePrefab[Random.Range(0, CurrentWeapon.ParticlePrefab.Length)], CurrentWeapon.PointParticleSpawn.position, CurrentWeapon.PointParticleSpawn.rotation);
-                            if(hit.collider.GetComponent<ZombieControl>() != null)
+                            if (hit.collider.GetComponent<ZombieControl>() != null)
+                            {
+                                GameObject trail = Instantiate(TrailBullet, SpawnPointTrail.position, TrailBullet.transform.rotation);
+                                trail.transform.SetParent(SpawnPointTrail);
+                                trail.GetComponent<Trail>().SetNewPosition(hit.point);
                                 hit.collider.GetComponent<ZombieControl>().DamageZombie(Random.Range(CurrentWeapon.MinDamage, CurrentWeapon.MaxDamage));
+                            }
+
                             CurrentWeapon.Bullets_InStore--;
                             TimerShot = 0;
                         }
