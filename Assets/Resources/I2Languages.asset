@@ -16,11 +16,97 @@ MonoBehaviour:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
-    mTerms: []
+    mTerms:
+    - Term: TakeWeapon
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0412\u041E\u0417\u042C\u041C\u0418\u0422\u0415 \u041E\u0420\u0423\u0416\u0418\u0415\t"
+      - TAKE A WEAPON
+      Flags: 0000
+      Languages_Touch: []
+    - Term: OpenDoor
+      TermType: 0
+      Description: 
+      Languages:
+      - OPEN THE DOOR
+      - "\u041E\u0422\u041A\u0420\u041E\u0419\u0422\u0415 \u0414\u0412\u0415\u0420\u042C"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: YouWin
+      TermType: 0
+      Description: 
+      Languages:
+      - "YOU WIN!\t"
+      - "\u041F\u041E\u0411\u0415\u0414\u0410!"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: NextLevel
+      TermType: 0
+      Description: 
+      Languages:
+      - NEXT LEVEL
+      - "\u041F\u0420\u041E\u0414\u041E\u041B\u0416\u0418\u0422\u042C"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Restart
+      TermType: 0
+      Description: 
+      Languages:
+      - RESTART
+      - "\u041F\u041E\u0412\u0422\u041E\u0420"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ExitInMenu
+      TermType: 0
+      Description: 
+      Languages:
+      - EXIT IN MENU
+      - "\u0412\u042B\u0419\u0422\u0418 "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: TimeUsed
+      TermType: 0
+      Description: 
+      Languages:
+      - TIME USED
+      - "\u0417\u0410\u0422\u0420\u0410\u0427\u0415\u041D\u041D\u041E\u0415 \u0412\u0420\u0415\u041C\u042F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: KilledByZombie
+      TermType: 0
+      Description: 
+      Languages:
+      - KILLED BY ZOMBIES
+      - "\u0423\u0411\u0418\u0422\u041E \u0417\u041E\u041C\u0411\u0418"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Pause
+      TermType: 0
+      Description: 
+      Languages:
+      - "PAUSE\t"
+      - "\u041F\u0410\u0423\u0417\u0410"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Resume
+      TermType: 0
+      Description: 
+      Languages:
+      - 
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
-    mLanguages: []
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Russian
+      Code: ru
+      Flags: 0
     IgnoreDeviceLanguage: 0
     _AllowUnloadingLanguages: 0
     Google_WebServiceURL: 
