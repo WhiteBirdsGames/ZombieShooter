@@ -46,7 +46,12 @@ public class WeaponsControl : MonoBehaviour
         CurrentWeapon = Weapons[0];
         TextHpPlayer.text = HP_Player.ToString();
     }
+    public void SetHP(float value)
+    {
+        HP_Player = value;
+        TextHpPlayer.text = HP_Player.ToString();
 
+    }
     public void DamagePlayer (float _damage)
     {
         HP_Player -= _damage;

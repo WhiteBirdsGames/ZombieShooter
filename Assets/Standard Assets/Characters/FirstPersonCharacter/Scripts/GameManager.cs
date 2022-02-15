@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject Window_Win, Window_Lose, Window_Pause;
 
     public UnityEvent OnWin, OnLose, OnPause;
+    public float DisanceDeadZombi_ADS;
+    public Transform Player;
 
     private void Awake()
     {
@@ -48,8 +50,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowLose()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         Window_Pause.SetActive(false);
+        Window_Lose.SetActive(true);
         OnLose.Invoke();
         Invoke("InvokeShowWin", 2f);
     }
@@ -58,6 +61,20 @@ public class GameManager : MonoBehaviour
     {
         Window_Win.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void RestartForADS ()
+    {
+        foreach (GameObject gm in GameObject.FindGameObjectsWithTag("ZombieBody"))
+        {
+            if(Vector3.Distance(gm.transform.position, Player.position) <= DisanceDeadZombi_ADS)
+            {
+                gm.GetComponent<ZombieControl>().State = ZombieControl.States.Death;
+            }
+        }
+        Player.GetComponent<WeaponsControl>().SetHP(100f);
+        Time.timeScale = 1f;
+        Window_Lose.SetActive(false);
     }
 
 }
