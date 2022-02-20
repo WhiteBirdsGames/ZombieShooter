@@ -85,12 +85,13 @@ public class WeaponsControl : MonoBehaviour
                         if(TimerShot >= CurrentWeapon.DelayShot)
                         {
                             Instantiate(CurrentWeapon.ParticlePrefab[Random.Range(0, CurrentWeapon.ParticlePrefab.Length)], CurrentWeapon.PointParticleSpawn.position, CurrentWeapon.PointParticleSpawn.rotation);
-                            if (hit.collider.GetComponent<ZombieControl>() != null)
+                            if (hit.collider.CompareTag("PartBody"))
                             {
                                 GameObject trail = Instantiate(TrailBullet, SpawnPointTrail.position, TrailBullet.transform.rotation);
                                 trail.transform.SetParent(SpawnPointTrail);
                                 trail.GetComponent<Trail>().SetNewPosition(hit.point);
-                                hit.collider.GetComponent<ZombieControl>().DamageZombie(Random.Range(CurrentWeapon.MinDamage, CurrentWeapon.MaxDamage));
+                               // print(hit.collider.gameObject.name);
+                                hit.collider.GetComponent<ZombiePartVars>().zombieControl.DamageZombie(Random.Range(CurrentWeapon.MinDamage, CurrentWeapon.MaxDamage));
                             }
 
                             CurrentWeapon.Bullets_InStore--;

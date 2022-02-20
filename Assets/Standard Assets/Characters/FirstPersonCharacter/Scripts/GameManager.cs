@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
             if(Vector3.Distance(gm.transform.position, Player.position) <= DisanceDeadZombi_ADS)
             {
                 gm.GetComponent<ZombieControl>().State = ZombieControl.States.Death;
+                gm.GetComponent<ZombieControl>().EnableRadgoll();
             }
         }
         Player.GetComponent<WeaponsControl>().SetHP(100f);

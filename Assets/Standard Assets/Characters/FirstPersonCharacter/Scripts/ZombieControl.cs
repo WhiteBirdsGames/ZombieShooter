@@ -15,6 +15,8 @@ public class ZombieControl : MonoBehaviour
     [SerializeField]
     private float _timeToStartDeathEvent = default;
 
+    public Rigidbody[] PartRigidbody;
+
 
     private bool isDeathEvent = false;
 
@@ -72,7 +74,7 @@ public class ZombieControl : MonoBehaviour
             Run = false;
             Damage = false;
             Slap = 0;
-            Death = Random.Range(1, 3);
+          //  Death = Random.Range(1, 3);
             DeathEvent();
         }
 
@@ -119,9 +121,30 @@ public class ZombieControl : MonoBehaviour
             }
             if(State != States.Death)
             {
+                EnableRadgoll();
                 WavesZombieSpawner.Instance.AddKilledZombie();
             }
             State = States.Death;
+        }
+    }
+
+    public void EnableRadgoll ()
+    {
+        ZombieAnimator.enabled = false;
+        for (int i = 0; i < PartRigidbody.Length; i++)
+        {
+            PartRigidbody[i].isKinematic = false;
+        }
+
+        Invoke("DisableCollides", 2f);
+    }
+
+    public void DisableCollides ()
+    {
+        for (int i = 0; i < PartRigidbody.Length; i++)
+        {
+            PartRigidbody[i].isKinematic = true;
+            PartRigidbody[i].GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -162,7 +185,7 @@ public class ZombieControl : MonoBehaviour
     {
         ZombieAnimator.SetBool("Run", Run);
         ZombieAnimator.SetBool("Damage", Damage);
-        ZombieAnimator.SetInteger("DeadVars", Death);
+       // ZombieAnimator.SetInteger("DeadVars", Death);
         ZombieAnimator.SetInteger("Slap", Slap);
     }
 

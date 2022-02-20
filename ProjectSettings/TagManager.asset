@@ -8,6 +8,8 @@ TagManager:
   - ZombieBody
   - AKM
   - Door
+  - PartHead
+  - PartBody
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Weapons
-  - 
-  - 
+  - ZombieParts
+  - Player
   - 
   - 
   - 
