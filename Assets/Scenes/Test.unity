@@ -921,7 +921,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP_Player: 100
   TrailBullet: {fileID: 3284960254507494095, guid: cb6a04ef3c45de246a4fc491837c1fb5, type: 3}
+  HeadShotPrefab: {fileID: 7328542572080421807, guid: 3ab8956d45460e44ab3be63568815c14, type: 3}
   SpawnPointTrail: {fileID: 1105912024}
+  ParentNotificationsHits: {fileID: 139608579}
   TextBullets: {fileID: 1745483773}
   TextHpPlayer: {fileID: 2058067952}
   IconAim: {fileID: 1670631862}
@@ -931,6 +933,7 @@ MonoBehaviour:
   DistanceRay: 30
   TagsEnemy:
   - PartBody
+  - PartHead
   Walk: 0
   Shot: 0
   Reload: 0
@@ -1426,6 +1429,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1769c345908a914f8300aba80b524ce, type: 3}
+--- !u!1 &139608578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139608579}
+  m_Layer: 8
+  m_Name: HitsNotifications
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &139608579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139608578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1985382897}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &141889265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1609,7 +1647,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985382897}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9388,7 +9426,7 @@ RectTransform:
   - {fileID: 372383176}
   - {fileID: 238420701}
   m_Father: {fileID: 1985382897}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -18997,6 +19035,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 139608579}
   - {fileID: 1281613926}
   - {fileID: 2085239758}
   - {fileID: 163822805}
@@ -19430,7 +19469,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 42.800003, y: -0.045959473}
-  m_SizeDelta: {x: 269, y: 80.448975}
+  m_SizeDelta: {x: 244, y: 80.448975}
   m_Pivot: {x: -0.000000044703484, y: 0.5}
 --- !u!114 &2048817895
 MonoBehaviour:
@@ -19713,7 +19752,7 @@ RectTransform:
   - {fileID: 2031245902}
   - {fileID: 863884239}
   m_Father: {fileID: 1985382897}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20060,6 +20099,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 2116119901}
   CollidersDisableDeath:
   - {fileID: 2116119900}
+  ForceKickDead: 0
 --- !u!95 &2116119904 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 8c3276aac26669446b06c01df5fe1449, type: 3}

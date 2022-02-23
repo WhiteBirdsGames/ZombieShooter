@@ -7,8 +7,8 @@ public class WeaponsControl : MonoBehaviour
 {
     public float HP_Player;
 
-    public GameObject TrailBullet;
-    public Transform SpawnPointTrail;
+    public GameObject TrailBullet, HeadShotPrefab;
+    public Transform SpawnPointTrail, ParentNotificationsHits;
     public Text TextBullets, TextHpPlayer;
     public Image IconAim;
     public Color ColorDefaultAim, ColorFireAim;
@@ -91,9 +91,17 @@ public class WeaponsControl : MonoBehaviour
                                 trail.transform.SetParent(SpawnPointTrail);
                                 trail.GetComponent<Trail>().SetNewPosition(hit.point);
                                // print(hit.collider.gameObject.name);
-                                hit.collider.GetComponent<ZombiePartVars>().zombieControl.DamageZombie(Random.Range(CurrentWeapon.MinDamage, CurrentWeapon.MaxDamage));
+                                hit.collider.GetComponent<ZombiePartVars>().zombieControl.DamageZombie(Random.Range(CurrentWeapon.MinDamage, CurrentWeapon.MaxDamage), direction, hit.collider.GetComponent<Rigidbody>());
                             }
-
+                            if (hit.collider.CompareTag("PartHead"))
+                            {
+                                GameObject trail = Instantiate(TrailBullet, SpawnPointTrail.position, TrailBullet.transform.rotation);
+                                trail.transform.SetParent(SpawnPointTrail);
+                                trail.GetComponent<Trail>().SetNewPosition(hit.point);
+                                // print(hit.collider.gameObject.name);
+                                Instantiate(HeadShotPrefab, ParentNotificationsHits);
+                                hit.collider.GetComponent<ZombiePartVars>().zombieControl.SetDead(direction, hit.collider.GetComponent<Rigidbody>());
+                            }
                             CurrentWeapon.Bullets_InStore--;
                             TimerShot = 0;
                         }

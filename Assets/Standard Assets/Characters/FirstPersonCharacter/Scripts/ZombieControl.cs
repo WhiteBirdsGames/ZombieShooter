@@ -36,6 +36,8 @@ public class ZombieControl : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Collider[] CollidersDisableDeath;
 
+    public float ForceKickDead;
+
     private void Awake()
     {
         navMeshAgent.autoBraking = false;
@@ -105,7 +107,7 @@ public class ZombieControl : MonoBehaviour
         }
     }
 
-    public void DamageZombie (float _damage)
+    public void DamageZombie (float _damage, Vector3 directionBullet, Rigidbody chestRigitbody)
     {
         State = States.Damage;
         navMeshAgent.isStopped = true;
@@ -122,6 +124,7 @@ public class ZombieControl : MonoBehaviour
             if(State != States.Death)
             {
                 EnableRadgoll();
+                chestRigitbody.AddForce(directionBullet * ForceKickDead);
                 WavesZombieSpawner.Instance.AddKilledZombie();
             }
             State = States.Death;
@@ -145,6 +148,17 @@ public class ZombieControl : MonoBehaviour
         {
             PartRigidbody[i].isKinematic = true;
             PartRigidbody[i].GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    public void SetDead(Vector3 directionBullet, Rigidbody chestRigitbody)
+    {
+        if (State != States.Death)
+        {
+            EnableRadgoll();
+            chestRigitbody.AddForce(directionBullet * ForceKickDead);
+            WavesZombieSpawner.Instance.AddKilledZombie();
+            State = States.Death;
         }
     }
 
