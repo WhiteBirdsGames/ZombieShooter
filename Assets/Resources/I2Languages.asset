@@ -93,8 +93,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
-      - 
+      - RESUME
+      - "\u041F\u0420\u041E\u0414\u041E\u041B\u0416\u0418\u0422\u042C"
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

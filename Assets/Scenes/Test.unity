@@ -2588,7 +2588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &297040865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5861,7 +5861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &985511062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16572,15 +16572,7 @@ MonoBehaviour:
     - {fileID: 814722445}
     - {fileID: 187050604}
     DelaySpawnZombi: 0.15
-    MaxCountZombi: 15
-    CountSpawnedZombi: 0
-  - DelayStartSpawned: 5
-    SpawnPoints:
-    - {fileID: 756413023}
-    - {fileID: 814722445}
-    - {fileID: 187050604}
-    DelaySpawnZombi: 1
-    MaxCountZombi: 15
+    MaxCountZombi: 5
     CountSpawnedZombi: 0
   - DelayStartSpawned: 15
     SpawnPoints:
@@ -16588,7 +16580,15 @@ MonoBehaviour:
     - {fileID: 814722445}
     - {fileID: 187050604}
     DelaySpawnZombi: 1
-    MaxCountZombi: 5
+    MaxCountZombi: 10
+    CountSpawnedZombi: 0
+  - DelayStartSpawned: 30
+    SpawnPoints:
+    - {fileID: 756413023}
+    - {fileID: 814722445}
+    - {fileID: 187050604}
+    DelaySpawnZombi: 1
+    MaxCountZombi: 10
     CountSpawnedZombi: 0
   KilledZombi: 0
   CountStartZombi: 1
